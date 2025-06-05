@@ -1,163 +1,222 @@
-# **Hands On Lab: Memoria**
+# **Hands On Lab: Memòria**
+*Autors: Zakaria Hamdaoui, Sofía Giner Vargas i Joel Martínez Arjona*
 
-1.  Avaluant matrius…
+## 1. Avaluant matrius...
 
-***
+### **Fes una taula amb les mides de la matriu i els temps d'execució pels dos recorreguts**
 
--   **Fes una taula amb les mides de la matriu i els temps d’execució pels dos recorreguts.**
+#### **Matriu de 64x64**
+| **Execució** | **Inicialització (µs)** | **Fila (µs)** | **Mitjana Fila (µs)** | **Columna (µs)** | **Mitjana Columna (µs)** |
+|:------------:|:----------------------:|:-------------:|:---------------------:|:----------------:|:------------------------:|
+| 1 | 6 | 10, 6, 7 | 7.67 | 8, 12, 12 | 10.67 |
+| 2 | 7 | 7, 10, 10 | 9.00 | 6, 11, 6 | 7.67 |
+| 3 | 5 | 10, 10, 5 | 8.33 | 11, 11, 6 | 9.33 |
+| 4 | 10 | 10, 9, 6 | 8.33 | 11, 11, 11 | 11.00 |
+| 5 | 10 | 10, 5, 5 | 6.67 | 6, 11, 6 | 7.67 |
 
-***
+#### **Matriu de 128x128**
+| **Execució** | **Inicialització (µs)** | **Fila (µs)** | **Mitjana Fila (µs)** | **Columna (µs)** | **Mitjana Columna (µs)** |
+|:------------:|:----------------------:|:-------------:|:---------------------:|:----------------:|:------------------------:|
+| 1 | 35 | 35, 40, 37 | 37.33 | 29, 28, 29 | 28.67 |
+| 2 | 37 | 37, 40, 37 | 38.00 | 28, 28, 28 | 28.00 |
+| 3 | 32 | 37, 39, 40 | 38.67 | 37, 28, 29 | 31.33 |
+| 4 | 37 | 37, 41, 37 | 38.33 | 45, 28, 46 | 39.67 |
+| 5 | 37 | 40, 43, 38 | 40.33 | 28, 30, 28 | 28.67 |
 
-***
+#### **Matriu de 256x256**
+| **Execució** | **Inicialització (µs)** | **Fila (µs)** | **Mitjana Fila (µs)** | **Columna (µs)** | **Mitjana Columna (µs)** |
+|:------------:|:----------------------:|:-------------:|:---------------------:|:----------------:|:------------------------:|
+| 1 | 134 | 129, 128, 123 | 126.67 | 165, 162, 165 | 164.00 |
+| 2 | 154 | 140, 144, 138 | 140.67 | 192, 188, 185 | 188.33 |
+| 3 | 166 | 150, 138, 140 | 142.67 | 176, 175, 187 | 179.33 |
+| 4 | 139 | 139, 133, 146 | 139.33 | 172, 178, 175 | 175.00 |
+| 5 | 141 | 134, 144, 140 | 139.33 | 183, 172, 182 | 179.00 |
 
-## Matriu de 64x64
+#### **Matriu de 512x512**
+| **Execució** | **Inicialització (µs)** | **Fila (µs)** | **Mitjana Fila (µs)** | **Columna (µs)** | **Mitjana Columna (µs)** |
+|:------------:|:----------------------:|:-------------:|:---------------------:|:----------------:|:------------------------:|
+| 1 | 453 | 455, 453, 451 | 453.00 | 713, 710, 694 | 705.67 |
+| 2 | 472 | 481, 541, 625 | 549.00 | 774, 745, 746 | 755.00 |
+| 3 | 498 | 482, 489, 490 | 487.00 | 758, 753, 781 | 764.00 |
+| 4 | 492 | 519, 489, 549 | 519.00 | 788, 781, 762 | 777.00 |
+| 5 | 512 | 507, 531, 513 | 517.00 | 803, 803, 770 | 792.00 |
 
-| **Nº de vegades executat** | **Inicialització** | **Fila (µsegons)**                 | **Mitjana per fila (µsegons)** | **Columa (µsegons)**                | **Mitjana per columna (µsegons)** |
-|----------------------------|--------------------|------------------------------------|--------------------------------|-------------------------------------|-----------------------------------|
-| 1                          | 6 µsegons          | Temps 1: 10 Temps 2: 6 Temps 3: 7  | Mitja de temps: 7,67           | Temps 1: 8 Temps 2: 12 Temps 3: 12  | Mitja de temps: 10,67             |
-| 2                          | 7 µsegons          | Temps 1: 7 Temps 2: 10 Temps 3: 10 | Mitja de temps: 9,00           | Temps 1: 6 Temps 2: 11 Temps 3: 6   | Mitja de temps: 7,67              |
-| 3                          | 5 µsegons          | Temps 1: 10 Temps 2: 10 Temps 3: 5 | Mitja de temps: 8,33           | Temps 1: 11 Temps 2: 11 Temps 3: 6  | Mitja de temps: 9,33              |
-| 4                          | 10 µsegons         | Temps 1: 10 Temps 2: 9 Temps 3: 6  | Mitja de temps: 8,33           | Temps 1: 11 Temps 2: 11 Temps 3: 11 | Mitja de temps: 11,00             |
-| 5                          | 10 µsegons         | Temps 1: 10 Temps 2: 5 Temps 3: 5  | Mitja de temps: 6,67           | Temps 1: 6 Temps 2: 11 Temps 3: 6   | Mitja de temps: 7,67              |
+#### **Matriu de 1024x1024**
+| **Execució** | **Inicialització (µs)** | **Fila (µs)** | **Mitjana Fila (µs)** | **Columna (µs)** | **Mitjana Columna (µs)** |
+|:------------:|:----------------------:|:-------------:|:---------------------:|:----------------:|:------------------------:|
+| 1 | 1797 | 1988, 1923, 1963 | 1958.00 | 4279, 3702, 3306 | 3762.33 |
+| 2 | 1831 | 1872, 1922, 1980 | 1924.67 | 4566, 4139, 3618 | 4107.67 |
+| 3 | 2042 | 2231, 1893, 1940 | 2021.33 | 3737, 4246, 4041 | 4008.00 |
+| 4 | 2017 | 2012, 1879, 1887 | 1926.00 | 3792, 3675, 2941 | 3469.33 |
+| 5 | 1729 | 1798, 1698, 1685 | 1727.00 | 3611, 3427, 4929 | 3989.00 |
 
-***
+#### **Matriu de 2048x2048**
+| **Execució** | **Inicialització (µs)** | **Fila (µs)** | **Mitjana Fila (µs)** | **Columna (µs)** | **Mitjana Columna (µs)** |
+|:------------:|:----------------------:|:-------------:|:---------------------:|:----------------:|:------------------------:|
+| 1 | 5165 | 5368, 5472, 5361 | 5400.33 | 33512, 33177, 29950 | 32213.00 |
+| 2 | 4813 | 5446, 5266, 5088 | 5266.67 | 30354, 31300, 31798 | 31150.67 |
+| 3 | 5299 | 5046, 5232, 5329 | 5202.33 | 31961, 29804, 31604 | 31123.00 |
+| 4 | 5423 | 5423, 5154, 5094 | 5223.67 | 32285, 30948, 29276 | 30836.33 |
+| 5 | 5549 | 5325, 5435, 5262 | 5340.67 | 31884, 31367, 32021 | 31757.33 |
 
-## Matriu de 128x128
+#### **Matriu de 4096x4096**
+| **Execució** | **Inicialització (µs)** | **Fila (µs)** | **Mitjana Fila (µs)** | **Columna (µs)** | **Mitjana Columna (µs)** |
+|:------------:|:----------------------:|:-------------:|:---------------------:|:----------------:|:------------------------:|
+| 1 | 27660 | 29334, 27476, 25440 | 27416.67 | 202253, 210451, 200421 | 204375.00 |
+| 2 | 26408 | 24724, 23795, 26100 | 24873.00 | 206816, 191936, 206150 | 201634.00 |
+| 3 | 25076 | 26301, 24732, 29378 | 26803.67 | 243667, 248421, 231174 | 241087.33 |
+| 4 | 24548 | 23268, 24413, 25418 | 24366.33 | 202175, 205512, 204223 | 203970.00 |
+| 5 | 25296 | 25754, 28058, 27581 | 27131.00 | 226349, 216389, 215395 | 219377.67 |
 
-| **Nº de vegades executat** | **Inicialització** | **Fila (µsegons)**                  | **Mitjana per fila (µsegons)** | **Columa (µsegons)**                | **Mitjana per columna (µsegons)** |
-|----------------------------|--------------------|-------------------------------------|--------------------------------|-------------------------------------|-----------------------------------|
-| 1                          | 35 µsegons         | Temps 1: 35 Temps 2: 40 Temps 3: 37 | Mitja de temps: 37,33          | Temps 1: 29 Temps 2: 28 Temps 3: 29 | Mitja de temps: 28,67             |
-| 2                          | 37 µsegons         | Temps 1: 37 Temps 2: 40 Temps 3: 37 | Mitja de temps: 38,00          | Temps 1: 28 Temps 2: 28 Temps 3: 28 | Mitja de temps: 28,00             |
-| 3                          | 32 µsegons         | Temps 1: 37 Temps 2: 39 Temps 3: 40 | Mitja de temps: 38,67          | Temps 1: 37 Temps 2: 28 Temps 3: 29 | Mitja de temps: 31,33             |
-| 4                          | 37 µsegons         | Temps 1: 37 Temps 2: 41 Temps 3: 37 | Mitja de temps: 38,33          | Temps 1: 45 Temps 2: 28 Temps 3: 46 | Mitja de temps: 39,67             |
-| 5                          | 37 µsegons         | Temps 1: 40 Temps 2: 43 Temps 3: 38 | Mitja de temps: 40,33          | Temps 1: 28 Temps 2: 30 Temps 3: 28 | Mitja de temps: 28,67             |
+### **Anàlisi dels Resultats**
 
-***
+#### **És similar el temps d'execució quan es recorre per files i per columnes?**
+**No.** Inicialment, en matrius petites (64x64, 128x128), els temps són relativament similars. Però a mesura que la dimensió de la matriu augmenta, el temps d'execució per columnes esdevé **significativament superior** al de files.
 
-Matriu de 256x256
+**Ràtios de degradació:**
+- **512x512**: ~1.5x més lent per columnes
+- **1024x1024**: ~2x més lent per columnes  
+- **4096x4096**: ~8x més lent per columnes
 
-| **Nº de vegades executat** | **Inicialització** | **Fila (µsegons)**                     | **Mitjana per fila (µsegons)** | **Columa (µsegons)**                   | **Mitjana per columna (µsegons)** |
-|----------------------------|--------------------|----------------------------------------|--------------------------------|----------------------------------------|-----------------------------------|
-| 1                          | 134 µsegons        | Temps 1: 129 Temps 2: 128 Temps 3: 123 | Mitja de temps: 126,67         | Temps 1: 165 Temps 2: 162 Temps 3: 165 | Mitja de temps: 164,00            |
-| 2                          | 154 µsegons        | Temps 1: 140 Temps 2: 144 Temps 3: 138 | Mitja de temps: 140,67         | Temps 1: 192 Temps 2: 188 Temps 3: 185 | Mitja de temps: 188,33            |
-| 3                          | 166 µsegons        | Temps 1: 150 Temps 2: 138 Temps 3: 140 | Mitja de temps: 142,67         | Temps 1: 176 Temps 2: 175 Temps 3: 187 | Mitja de temps: 179,33            |
-| 4                          | 139 µsegons        | Temps 1: 139 Temps 2: 133 Temps 3: 146 | Mitja de temps: 139,33         | Temps 1: 172 Temps 2: 178 Temps 3: 175 | Mitja de temps: 175,00            |
-| 5                          | 141 µsegons        | Temps 1: 134 Temps 2: 144 Temps 3: 140 | Mitja de temps: 139,33         | Temps 1: 183 Temps 2: 172 Temps 3: 182 | Mitja de temps: 179,00            |
+#### **Anàlisi tècnica**
 
-***
+**Mida d'una fila en matriu 512x512:**
+- 512 elements × 1 byte/element = **512 bytes**
 
-Matriu de 512x512
+**Explicació de la diferència de rendiment:**
 
-| **Nº de vegades executat** | **Inicialització** | **Fila (µsegons)**                     | **Mitjana per fila (µsegons)** | **Columa (µsegons)**                   | **Mitjana per columna (µsegons)** |
-|----------------------------|--------------------|----------------------------------------|--------------------------------|----------------------------------------|-----------------------------------|
-| 1                          | 453 µsegons        | Temps 1: 455 Temps 2: 453 Temps 3: 451 | Mitja de temps: 453,00         | Temps 1: 713 Temps 2: 710 Temps 3: 694 | Mitja de temps: 705,67            |
-| 2                          | 472 µsegons        | Temps 1: 481 Temps 2: 541 Temps 3: 625 | Mitja de temps: 549,00         | Temps 1: 774 Temps 2: 745 Temps 3: 746 | Mitja de temps: 755,00            |
-| 3                          | 498 µsegons        | Temps 1: 482 Temps 2: 489 Temps 3: 490 | Mitja de temps: 487,00         | Temps 1: 758 Temps 2: 753 Temps 3: 781 | Mitja de temps: 764,00            |
-| 4                          | 492 µsegons        | Temps 1: 519 Temps 2: 489 Temps 3: 549 | Mitja de temps: 519,00         | Temps 1: 788 Temps 2: 781 Temps 3: 762 | Mitja de temps: 777,00            |
-| 5                          | 512 µsegons        | Temps 1: 507 Temps 2: 531 Temps 3: 513 | Mitja de temps: 517,00         | Temps 1: 803 Temps 2: 803 Temps 3: 770 | Mitja de temps: 792,00            |
+Aquest canvi és degut a la **localitat espacial** i el funcionament de la memòria cache:
 
-***
+1. **Recorregut per files:** Els elements són consecutius en memòria → alta localitat espacial → molts **cache hits**
+2. **Recorregut per columnes:** Salts de 512 bytes entre accessos → baixa localitat espacial → molts **cache misses**
 
-Matriu de 1024x1024
+#### **Relació amb la jerarquia de memòria**
 
-***
+**Cache del processador utilitzat:**
+- **L1 Data Cache:** 8×48 KB = 384 KB total  
+- **L2 Cache:** 8×1.25 MB = 10 MB total
+- **L3 Cache:** 24 MB
 
-***
+**Impacte per mida de matriu:**
+- **64×64 (4 KB):** Cap completament a L1 → temps similars
+- **256×256 (64 KB):** Comença a superar L1 → lleuger impacte
+- **512×512 (256 KB):** Supera L1, usa L2 → diferència notable
+- **2048×2048 (4 MB):** Supera L2, usa L3 → gran diferència
+- **4096×4096 (16 MB):** Supera L2, usa parcialment L3 → màxima diferència
 
-| **Nº de vegades executat** | **Inicialització** | **Fila (µsegons)**                        | **Mitjana per fila (µsegons)** | **Columa (µsegons)**                      | **Mitjana per columna (µsegons)** |
-|----------------------------|--------------------|-------------------------------------------|--------------------------------|-------------------------------------------|-----------------------------------|
-| 1                          | 1797 µsegons       | Temps 1: 1988 Temps 2: 1923 Temps 3: 1963 | Mitja de temps: 1958,00        | Temps 1: 4279 Temps 2: 3702 Temps 3: 3306 | Mitja de temps: 3762,33           |
-| 2                          | 1831 µsegons       | Temps 1: 1872 Temps 2: 1922 Temps 3: 1980 | Mitja de temps: 1924,67        | Temps 1: 4566 Temps 2: 4139 Temps 3: 3618 | Mitja de temps: 4107,67           |
-| 3                          | 2042 µsegons       | Temps 1: 2231 Temps 2: 1893 Temps 3: 1940 | Mitja de temps: 2021,33        | Temps 1: 3737 Temps 2: 4246 Temps 3: 4041 | Mitja de temps: 4008,00           |
-| 4                          | 2017 µsegons       | Temps 1: 2012 Temps 2: 1879 Temps 3: 1887 | Mitja de temps: 1926,00        | Temps 1: 3792 Temps 2: 3675 Temps 3: 2941 | Mitja de temps: 3469,33           |
-| 5                          | 1729 µsegons       | Temps 1: 1798 Temps 2: 1698 Temps 3: 1685 | Mitja de temps: 1727,00        | Temps 1: 3611 Temps 2: 3427 Temps 3: 4929 | Mitja de temps: 3989,00           |
+---
 
-***
+## 2. Patrons d'accés i impacte de la cache
 
-Matriu de 2048x2048
+### **Versió seleccionada: JKI**
 
-***
+```c
+for (j=0; j<N; j++)        // bucle exterior
+  for (k=0; k<N; k++)      // bucle mitjà  
+    for (i=0; i<N; i++)    // bucle interior
+      C[i][j] = C[i][j] + A[i][k] * B[k][j];
+```
 
-| **Nº de vegades executat** | **Inicialització** | **Fila (µsegons)**                        | **Mitjana per fila (µsegons)** | **Columa (µsegons)**                         | **Mitjana per columna (µsegons)** |
-|----------------------------|--------------------|-------------------------------------------|--------------------------------|----------------------------------------------|-----------------------------------|
-| 1                          | 5165 µsegons       | Temps 1: 5368 Temps 2: 5472 Temps 3: 5361 | Mitja de temps: 5400,33        | Temps 1: 33512 Temps 2: 33177 Temps 3: 29950 | Mitja de temps: 32213,00          |
-| 2                          | 4813 µsegons       | Temps 1: 5446 Temps 2: 5266 Temps 3: 5088 | Mitja de temps: 5266,67        | Temps 1: 30354 Temps 2: 31300 Temps 3: 31798 | Mitja de temps: 31150,67          |
-| 3                          | 5299 µsegons       | Temps 1: 5046 Temps 2: 5232 Temps 3: 5329 | Mitja de temps: 5202,33        | Temps 1: 31961 Temps 2: 29804 Temps 3: 31604 | Mitja de temps: 31123,00          |
-| 4                          | 5423 µsegons       | Temps 1: 5423 Temps 2: 5154 Temps 3: 5094 | Mitja de temps: 5223,67        | Temps 1: 32285 Temps 2: 30948 Temps 3: 29276 | Mitja de temps: 30836,33          |
-| 5                          | 5549 µsegons       | Temps 1: 5325 Temps 2: 5435 Temps 3: 5262 | Mitja de temps: 5340,67        | Temps 1: 31884 Temps 2: 31367 Temps 3: 32021 | Mitja de temps: 31757,33          |
+### **Temps d'execució**
 
-***
+| **Dimensió (N)** | **Temps (ms)** |
+|:-----------------:|:--------------:|
+| 256 | 57.778 |
+| 512 | 849.848 |
+| 1024 | 9683.562 |
 
-Matriu de 4096x4096
+### **Patró d'accés a les matrius**
 
-***
+Per cada execució completa del **bucle interior (i)**:
 
-| **Nº de vegades executat** | **Inicialització** | **Fila (µsegons)**                           | **Mitjana per fila (µsegons)** | **Columa (µsegons)**                            | **Mitjana per columna (µsegons)** |
-|----------------------------|--------------------|----------------------------------------------|--------------------------------|-------------------------------------------------|-----------------------------------|
-| 1                          | 27660 µsegons      | Temps 1: 29334 Temps 2: 27476 Temps 3: 25440 | Mitja de temps: 27416,67       | Temps 1: 202253 Temps 2: 210451 Temps 3: 200421 | Mitja de temps: 204375,00         |
-| 2                          | 26408 µsegons      | Temps 1: 24724 Temps 2: 23795 Temps 3: 26100 | Mitja de temps: 24873,00       | Temps 1: 206816 Temps 2: 191936 Temps 3: 206150 | Mitja de temps: 201634,00         |
-| 3                          | 25076 µsegons      | Temps 1: 26301 Temps 2: 24732 Temps 3: 29378 | Mitja de temps: 26803,67       | Temps 1: 243667 Temps 2: 248421 Temps 3: 231174 | Mitja de temps: 241087,33         |
-| 4                          | 24548 µsegons      | Temps 1: 23268 Temps 2: 24413 Temps 3: 25418 | Mitja de temps: 24366,33       | Temps 1: 202175 Temps 2: 205512 Temps 3: 204223 | Mitja de temps: 203970,00         |
-| 5                          | 25296 µsegons      | Temps 1: 25754 Temps 2: 28058 Temps 3: 27581 | Mitja de temps: 27131,00       | Temps 1: 226349 Temps 2: 216389 Temps 3: 215395 | Mitja de temps: 219377,67         |
+- **Matriu A:** `A[0][k], A[1][k], ..., A[N-1][k]` → accés per **columna**
+- **Matriu B:** `B[k][j]` → **1 element constant**
+- **Matriu C:** `C[0][j], C[1][j], ..., C[N-1][j]` → accés per **columna**
 
-***
+### **Càlcul de pàgines de memòria virtual**
 
--   **Es similar el temps d’execució quan es recorre per files de quan es recorre per columnes? (Assegurat de fer un parell d’execucions per estar-ne segur)**
+**Paràmetres:**
+- Element: 4 bytes (float)
+- Pàgina: 4096 bytes
+- Elements per pàgina: 4096 ÷ 4 = **1024 elements**
 
-Al principi, en matrius de menor escala, sí que són similars, però a mesura que creix la dimensió de la matriu, el temps d’execució de les columnes és molt superior al de les files.
+**Càlculs per matriu:**
 
--   **A la vista de la taula, què en pots extreure? Hi ha algun canvi en els temps d’execucció entre els 2 recorreguts? Quant ocupa 1 fila? Per quècreus que passa?**
+#### **Matriu A (accés per columna)**
+Elements per columna = N  
+Pàgines = ⌈N ÷ 1024⌉
 
-Amb la taula (concretament la de 512x512), podem extreure que comença a haver-hi un canvi en el temps d’execució d’uns 250-280 μs. Les files, en aquest cas, ocupen 512 Bytes, mentre que la matriu ocupa 262144 Bytes. Aquest canvi en el temps d’execució és degut a, possiblement, a què les dades es guardin a la memòria segons la fila, per tant, és més eficient llegir la informació d’aquesta manera.
+#### **Matriu B (1 element)**  
+Pàgines = 1
 
--   **Comprova els nivells de cache del teu processador [CPUDB] amb els resultats que t’han sortit a la taula.**
+#### **Matriu C (accés per columna)**
+Elements per columna = N  
+Pàgines = ⌈N ÷ 1024⌉
 
-Els nivells de cache de l'ordinador amb el qual s’ha executat el programa són els següents:
+### **Resultats**
 
-Nivell 1: 8x32 KB en cache d’instruccions i 8x48 KB en caches de dades.
+| **N** | **Matriu A** | **Matriu B** | **Matriu C** |
+|:-----:|:------------:|:------------:|:------------:|
+| 256 | 1 | 1 | 1 |
+| 512 | 1 | 1 | 1 |
+| 1024 | 1 | 1 | 1 |
+| 2048 | 2 | 1 | 2 |
 
-Nivell 2: 8x1,25 MB.
+> **Nota:** L'accés per columnes és ineficient perquè cada element accedeix a una pàgina diferent, provocant molts cache misses.
 
-Nivell 3: 24 MB.
+---
 
-2.  Patrons d’accés i impacte de la cache
--   **Apunta el temps d’execució per la versió triada:**
+## 3. Memòria dinàmica
 
-Versió JKI
+### **Motxilla del bruixot**
 
-Dimensió = 256: t= 57,778 milisegons.
+✅ **Implementació completada a `geraldBag.c`**
 
-Dimensió = 512: t= 849,848 milisegons
+El programa implementa:
+- **Estructura:** Llista encadenada d'elements
+- **Funcionalitats:**
+  - Afegir nous elements
+  - Llistar elements existents  
+  - Gestió automàtica de memòria
+- **Compatibilitat:** Windows i Linux
 
-Dimensió = 1024: t= 9683,562 milisegons
+### **Limitacions [Opcional]**
 
--   **Supossant que cada element de la matriu ocupa 4 bytes, i que la mida de pàgina del nostre sistema és de 4Kbytes calcula pel cas triat el nombre de pàgines de memòria virtual que s’usen a l’executar completament el bucle més intern 1 cop. Per exemple, en el cas mm-ijk, per cada execució de tot el bucle ‘k’ la matriu C només accedeix a 1 element (4bytes), mentres que la matriu A accedeix a tota 1 fila (elements consecutius) i la matriu B a tota 1 columna (elements no consecutius).**
+#### **Anàlisi de `mem.c`**
 
-Versió JKI
+**Comportament observat:**
+1. **Accessos legals (0-9):** Escrits dins del rang de `malloc(10)` → ✅ Funciona
+2. **Accessos il·legals (10-19):** Escrits fora del rang reservat → ⚠️ Funciona (per ara)
+3. **Accessos extrems (20+):** → ❌ Segmentation fault
 
-Dimensió = 256: A = 256 \|\| B= 1 \|\| C= 256
+**Explicació tècnica:**
+- El sistema operatiu assigna memòria en **pàgines de 4096 bytes**
+- `malloc(10)` pot estar dins d'una pàgina més gran
+- Els accessos il·legals inicials poden caure dins de la mateixa pàgina → aparentment "legals"
+- Quan s'arriba als límits de la pàgina → el SO detecta l'accés il·legal
 
-Dimensió = 512: A = 512 \|\| B= 1 \|\| C= 512
+#### **Anàlisi de `mem2.c`**
 
-Dimensió = 1024: A = 1024 \|\| B= 1 \|\| C=1024
+**Seqüència d'events:**
+1. **X reservada** amb `malloc(10)` → escriptura legal
+2. **X alliberada** amb `free(x)`
+3. **Y reservada** amb `malloc(10)` → escriptura inicial legal
+4. **Corrupció massiva:** Escriptura fins a posició 133000
+5. **Intent de `free(y)`** → ❌ Heap completament corromput
 
-3.  Memòria dinàmica
-4.  Motxil.la bruixot
--   Crea un programa que mostri un menu similar a: Current Bag has a total of %d elements What do you want to do? 1) Add a new element 2) List elements Enter command or Ctrl-C to exit: Que es repeteixi continuament fins que es premi Ctrl-C. Aquest menu mostra el nombre d’objectes total dins la motxil.la, permet afegir-hi 1 objecte i llistar els objectes continguts. Completa el codi dins ‘geraldBag.c’ que ja conté la major part del codi.
+**Conseqüències de la corrupció:**
+- **Metadades del heap** destruïdes
+- **free()** no pot funcionar correctament
+- **Futurs malloc()** poden fallar
+- **Comportament impredictible** del programa
 
-**Arxiu geraldBag.c afegit a la tasca.**
+> **⚠️ Lliçó:** Mai accedir a memòria fora dels límits reservats, encara que sembli "funcionar"
 
-2.  Limitacions [Opcional]
--   **Executa el codi mem1, observa el resultat i intenta deduir què està pasant**
+---
 
-Els primers 10 accessos a la memòria són legals, per tal deixa escriure sense cap problema (definits a char \* x = malloc(10)).
+## 4. Conclusions
 
-Els próxims 10, encara que son ilegals, poden caure dins d'una zona de memòria que el procés pot accedir, encara que no es troben dins del rang assignat específicament a “char \* x = malloc(10)”.
-
-Després, el programa executa un bucle “infinit”, que s’acaba forçosament quan s’intenta escriure a una adreça de memòria limitada pel sistema operatiu. En el nostre cas, arriba fins a 28310 accessos il·legals abans de tancar-se el programa.
-
--   **Executa el codi mem2, observa el resultat i intenta deduir què està pasant**
-
-En aquest programa, al igual que el primer, reserva X amb malloc(10), llavors escriu de manera legal sobre 10 direccions de memoria. Posteriorment, aquest espai s’allibera amb free(x).
-
-A continuació, es reserva Y de la mateixa manera que es reserva X, però en escriure més enllà de la desena direcció (espai que ja no està reservat), concretament fins a la posició 133000 (designat al bucle for). En el nostre cas, el programa s’atura abans d’arribar a aquesta direcció, però en el codi, després d’arribar, es vol alliberar l’espai d’Y amb free(y), però en aquest punt la memòria es troba totalment corrompuda. Finalment, el programa vol reservar X un altre cop, però a causa de la corrupció anterior, aquest pot fallar o no realitzar l’ordre correctament.
+1. **Cache és crucial:** La localitat espacial determina el rendiment
+2. **Patrons d'accés importants:** Files vs columnes pot ser 8x diferència
+3. **Gestió de memòria:** Respectar sempre els límits de `malloc()`
+4. **Debugging:** Les violacions de memòria poden ser silencioses inicialment

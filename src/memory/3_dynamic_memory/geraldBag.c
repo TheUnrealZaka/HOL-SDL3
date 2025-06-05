@@ -8,7 +8,7 @@
 #include <string.h>
 
 #ifdef _WIN32
-//#include <io.h>
+#include <io.h>  // Descomentar aquesta línia per Windows
 #else
 #include <unistd.h>
 #endif
@@ -84,6 +84,17 @@ void list_elements(struct bag* geraldBag) {
         object = object->next;
         i++;
     }
+}
+
+void free_bag(struct bag* geraldBag) {
+    struct element* current = geraldBag->first;
+    while (current != NULL) {
+        struct element* next = current->next;
+        free(current);
+        current = next;
+    }
+    geraldBag->first = NULL;
+    geraldBag->nelems = 0;
 }
 
 int geraldBag() {

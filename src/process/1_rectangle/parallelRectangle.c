@@ -208,10 +208,10 @@ static void updateRect(int start, int iters)
     SDL_RenderClear(renderer);
 
     // Draw all rectangles (not just our portion for visual consistency)
-    for (int i = 0; i < MAXR; i++)
+    for (int i = 0; i < MAXR; i++)  // CORRECCIÓ: era start + i
     {
         SDL_SetRenderDrawColor(renderer, rand() % 255, rand() % 255, rand() % 255, 255);
-        SDL_FRect frect = {r[start + i].x, r[start + i].y, r[start + i].w, r[start + i].h};
+        SDL_FRect frect = {r[i].x, r[i].y, r[i].w, r[i].h};  // CORRECCIÓ: era r[start + i]
         SDL_RenderFillRect(renderer, &frect);
     }
 

@@ -1,5 +1,5 @@
 ## Heads on Lab - Gestió d'entrada/sortida
-### Autors: Zakaria Hamdaoui, Joel Martínez Arjona i Sofia Giner Vargas
+*Autors: Zakaria Hamdaoui, Sofía Giner Vargas i Joel Martínez Arjona*
 
 ### 1. Paths per MYSTRING.TXT
 
