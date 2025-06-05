@@ -71,36 +71,27 @@ static int updateRectThread(void *data)
 
     while (!quit)
     {
-        // Only move rectangles, don't render
+        // Each thread handles its portion: MOVE + RENDER
         for (int i = 0; i < threadData->count; i++)
         {
-            move(&r[threadData->start + i]);
+            int rectIndex = threadData->start + i;
+            
+            // Move rectangle
+            move(&r[rectIndex]);
+            
+            // Each thread renders its own rectangles
+            SDL_SetRenderDrawColor(renderer, rand() % 255, rand() % 255, rand() % 255, 255);
+            SDL_FRect frect = {(float)r[rectIndex].x, (float)r[rectIndex].y, 
+                              (float)r[rectIndex].w, (float)r[rectIndex].h};
+            SDL_RenderFillRect(renderer, &frect);
         }
-
-        SDL_Delay(1); // Small delay to prevent 100% CPU usage
+        
+        // Small delay to prevent 100% CPU usage
+        SDL_Delay(1);
     }
 
     printf("Thread %d finished\n", threadData->thread_id);
     return 0;
-}
-
-// New render function - only called by main thread
-static void renderFrame()
-{
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderClear(renderer);
-
-    // Draw all rectangles
-    for (int i = 0; i < MAXR; i++)
-    {
-        SDL_SetRenderDrawColor(renderer, rand() % 255, rand() % 255, rand() % 255, 255);
-        // Fix: Cast to float to avoid warnings
-        SDL_FRect frect = {(float)r[i].x, (float)r[i].y, (float)r[i].w, (float)r[i].h};
-        SDL_RenderFillRect(renderer, &frect);
-    }
-
-    SDL_RenderPresent(renderer);
-    frames++;
 }
 
 int parallelRectangle(int argc, char **argv)
@@ -177,7 +168,7 @@ int parallelRectangle(int argc, char **argv)
         }
     }
 
-    // Main thread handles rendering and FPS calculation
+    // Main thread handles only FPS calculation and events
     SDL_Event e;
     Uint64 start, now;
     start = SDL_GetTicks();
@@ -190,8 +181,13 @@ int parallelRectangle(int argc, char **argv)
                 quit = true;
         }
 
-        // Render in main thread only
-        renderFrame();
+        // Clear screen once per frame
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderClear(renderer);
+        
+        // Present the frame (all threads have drawn their parts)
+        SDL_RenderPresent(renderer);
+        frames++;
 
         now = SDL_GetTicks();
         if ((now - start) > 1000)
@@ -200,8 +196,6 @@ int parallelRectangle(int argc, char **argv)
             printf("frames/s = %d (using %d threads)\n", frames, numThreads);
             frames = 0;
         }
-
-        SDL_Delay(16); // ~60 FPS cap
     }
 
     printf(" ** Finishing and waiting for threads...\n");
