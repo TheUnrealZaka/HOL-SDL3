@@ -75,9 +75,9 @@ int shared_inc_multi(int argc, char *argv[]) {
     printf("Difference:     %d\n", expectedValue - globalVar);
     
     if (globalVar == expectedValue) {
-        printf("✓ Result is correct!\n");
+        printf("Result is correct!\n");
     } else {
-        printf("✗ Result is incorrect! Race condition detected!\n");
+        printf("Result is incorrect! Race condition detected!\n");
         printf("Lost increments: %d (%.2f%%)\n", 
                expectedValue - globalVar, 
                100.0 * (expectedValue - globalVar) / expectedValue);

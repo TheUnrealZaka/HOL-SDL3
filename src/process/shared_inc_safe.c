@@ -96,9 +96,9 @@ int shared_inc_safe(int argc, char *argv[]) {
     printf("Difference:     %d\n", expectedValue - globalVar);
     
     if (globalVar == expectedValue) {
-        printf("✓ Result is correct! Mutex protection worked!\n");
+        printf("Result is correct! Mutex protection worked!\n");
     } else {
-        printf("✗ Result is still incorrect! Something went wrong!\n");
+        printf("Result is still incorrect! Something went wrong!\n");
     }
     
     // Cleanup

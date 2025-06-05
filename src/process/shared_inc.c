@@ -40,9 +40,9 @@ int shared_inc(int argc, char *argv[]) {
     printf("Final globalVar value: %d\n", globalVar);
     
     if (globalVar == N) {
-        printf("✓ Result is correct!\n");
+        printf("Result is correct!\n");
     } else {
-        printf("✗ Result is incorrect! Expected %d, got %d\n", N, globalVar);
+        printf("Result is incorrect! Expected %d, got %d\n", N, globalVar);
     }
     
     SDL_Quit();
