@@ -36,17 +36,18 @@
 
 | **Threads** | **FPS** | **Millora** | **Eficiència** |
 |:-----------:|:-------:|:-----------:|:--------------:|
-| 1 (original)| 3960     | -           | 100%           |
-| 2           | 56     | +X%         | X%             |
-| 4           | 55    | +X%         | X%             |
-| 8           | 57     | +X%         | X%             |
-| 14          | 56     | +X%         | X%             |
+| 1 (original)| 1297     | -           | 100%           |
+| 2           | 1454     | 112.1%         | 56%             |
+| 4           | 1175    | 90.59%         | 22.6%             |
+| 8           | 1358     | 104.7%         | 13.08%             |
+| 14          | 1377     | 106.2%         | 7.58%             |
+| 32          | 1466     | 113%         | 3.53%             |
 
 
 ### **Conclusions**
-- **Millor rendiment:** X threads
-- **Punt de saturació:** X threads
-- **Raó:** [Explicar per què no millora linealment]
+- **Millor rendiment:** 32 threads
+- **Punt de saturació:** No hi ha punt de saturació
+- **Raó:** El processador utilitzat accepta multi-threading
 
 ## 3. Compartint recursos
 
@@ -78,7 +79,7 @@
 
 ## 4. Conclusions
 
-1. **Threads milloren el rendiment** fins a un punt de saturació
+1. **Threads milloren el rendiment** sense cap punt de saturació
 2. **Race conditions** són un problema real en programació concurrent  
 3. **Mutex** resol la compartició segura de recursos
 4. **Cost de sincronització** pot reduir els beneficis del paral·lelisme
