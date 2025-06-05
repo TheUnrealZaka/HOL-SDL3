@@ -28,8 +28,34 @@ typedef struct
 } ThreadData;
 
 static bool initializeSDL();
-static void updateRect(int start, int iters);
-static void move(SDL_Rect *rect);
+// Move a rectangle in a random direction
+static void move(SDL_Rect *rect)
+{
+    int dir = rand() % 4;
+    switch (dir)
+    {
+    case 0: // RIGHT
+        rect->x += 10;
+        if (rect->x >= SCREEN_WIDTH)
+            rect->x = 0;
+        break;
+    case 1: // DOWN
+        rect->y += 10;
+        if (rect->y >= SCREEN_HEIGHT)
+            rect->y = 0;
+        break;
+    case 2: // LEFT
+        rect->x -= 10;
+        if (rect->x < 0)
+            rect->x = SCREEN_WIDTH - 10;
+        break;
+    case 3: // UP
+        rect->y -= 10;
+        if (rect->y < 0)
+            rect->y = SCREEN_HEIGHT - 10;
+        break;
+    }
+}
 
 // Thread function - each thread processes a portion of rectangles
 static int updateRectThread(void *data)
@@ -41,12 +67,35 @@ static int updateRectThread(void *data)
 
     while (!quit)
     {
-        updateRect(threadData->start, threadData->count);
+        // Only move rectangles, don't render
+        for (int i = 0; i < threadData->count; i++)
+        {
+            move(&r[threadData->start + i]);
+        }
+
         SDL_Delay(1); // Small delay to prevent 100% CPU usage
     }
 
     printf("Thread %d finished\n", threadData->thread_id);
     return 0;
+}
+
+// New render function - only called by main thread
+static void renderFrame()
+{
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderClear(renderer);
+
+    // Draw all rectangles
+    for (int i = 0; i < MAXR; i++)
+    {
+        SDL_SetRenderDrawColor(renderer, rand() % 255, rand() % 255, rand() % 255, 255);
+        SDL_FRect frect = {r[i].x, r[i].y, r[i].w, r[i].h};
+        SDL_RenderFillRect(renderer, &frect);
+    }
+
+    SDL_RenderPresent(renderer);
+    frames++;
 }
 
 int parallelRectangle(int argc, char **argv)
@@ -96,14 +145,16 @@ int parallelRectangle(int argc, char **argv)
         threadData[i].start = i * rectsPerThread;
         threadData[i].count = rectsPerThread;
 
-        // Distribute remaining rectangles to first threads
+        // Fix the work distribution
         if (i < remainingRects)
         {
             threadData[i].count++;
+            // Fix: Adjust start position for remaining rectangles
             threadData[i].start += i;
         }
         else
         {
+            // Fix: Adjust start position for threads without extra rectangles
             threadData[i].start += remainingRects;
         }
 
@@ -122,7 +173,7 @@ int parallelRectangle(int argc, char **argv)
         }
     }
 
-    // Main thread calculates FPS
+    // Main thread handles rendering and FPS calculation
     SDL_Event e;
     Uint64 start, now;
     start = SDL_GetTicks();
@@ -135,6 +186,9 @@ int parallelRectangle(int argc, char **argv)
                 quit = true;
         }
 
+        // Render in main thread only
+        renderFrame();
+
         now = SDL_GetTicks();
         if ((now - start) > 1000)
         {
@@ -142,6 +196,8 @@ int parallelRectangle(int argc, char **argv)
             printf("frames/s = %d (using %d threads)\n", frames, numThreads);
             frames = 0;
         }
+
+        SDL_Delay(16); // ~60 FPS cap
     }
 
     printf(" ** Finishing and waiting for threads...\n");
@@ -160,63 +216,6 @@ int parallelRectangle(int argc, char **argv)
     SDL_DestroyWindow(window);
     SDL_Quit();
     return 0;
-}
-
-// Move a rectangle in a random direction
-static void move(SDL_Rect *rect)
-{
-    int dir = rand() % 4;
-    switch (dir)
-    {
-    case 0: // RIGHT
-        rect->x += 10;
-        if (rect->x >= SCREEN_WIDTH)
-            rect->x = 0;
-        break;
-    case 1: // DOWN
-        rect->y += 10;
-        if (rect->y >= SCREEN_HEIGHT)
-            rect->y = 0;
-        break;
-    case 2: // LEFT
-        rect->x -= 10;
-        if (rect->x < 0)
-            rect->x = SCREEN_WIDTH - 10;
-        break;
-    case 3: // UP
-        rect->y -= 10;
-        if (rect->y < 0)
-            rect->y = SCREEN_HEIGHT - 10;
-        break;
-    }
-}
-
-// Move rectangles 'start' to 'start+iters' in a random way
-static void updateRect(int start, int iters)
-{
-    // NOTE: En un cas real, hauríem de sincronitzar l'accés al renderer
-    // però per simplicitat ho fem així
-
-    for (int i = 0; i < iters; i++)
-    {
-        move(&r[start + i]);
-    }
-
-    // Only one thread should update the screen at a time
-    // Per simplicitat, cada thread actualitza la seva part
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderClear(renderer);
-
-    // Draw all rectangles (not just our portion for visual consistency)
-    for (int i = 0; i < MAXR; i++)  // CORRECCIÓ: era start + i
-    {
-        SDL_SetRenderDrawColor(renderer, rand() % 255, rand() % 255, rand() % 255, 255);
-        SDL_FRect frect = {r[i].x, r[i].y, r[i].w, r[i].h};  // CORRECCIÓ: era r[start + i]
-        SDL_RenderFillRect(renderer, &frect);
-    }
-
-    SDL_RenderPresent(renderer);
-    frames++;
 }
 
 // Initialize SDL

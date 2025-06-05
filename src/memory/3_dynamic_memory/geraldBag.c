@@ -44,7 +44,8 @@ int menu(struct bag* geraldBag) {
     printf(" What do you want to do?\n");
     printf("    1) Add a new element\n");
     printf("    2) List elements\n");
-    printf(" Enter command or Ctrl-C to exit: \n");
+	printf("    0) Exit\n");
+    printf(" Enter command: \n");
     char buff[50];
 #ifdef _WIN32
     fgets(buff, 50, stdin);  // Usar fgets() en Windows
@@ -113,6 +114,10 @@ int geraldBag() {
         case 2:
             list_elements(&geraldBag);
             break;
+        case 0:
+            free_bag(&geraldBag);
+            waitReturn();
+            return 0;
         default:
             break;
         }
