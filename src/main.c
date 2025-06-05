@@ -30,19 +30,19 @@ extern int shared_inc_multi(int argc, char* argv[]);
 extern int shared_inc_safe(int argc, char* argv[]);
 
 void mostrarMenu() {
-    printf("\n=== HOL - HANDS ON LAB ===\n");
-    printf("Selecciona un mòdul:\n\n");
+    printf("\n=== HOL - HANDS ON LAB - SDL3 ===\n");
+    printf("Selecciona un modul:\n\n");
     
-    printf("📁 FILES:\n");
+    printf("FILES:\n");
     printf("  1) Write String (write_string.c)\n");
     printf("  2) Write Integers (write_ints.c)\n");
     printf("  3) Read Integers (read_ints.c)\n");
     printf("  4) Hall of Fame (hall_of_fame.c)\n\n");
     
-    printf("💾 MEMORY:\n");
+    printf("MEMORY:\n");
     printf("  5) Gerald's Bag (geraldBag.c)\n\n");
     
-    printf("⚡ PROCESS:\n");
+    printf("PROCESS:\n");
     printf("  6) Rectangle Single Thread (rectangle.c)\n");
     printf("  7) Rectangle with Thread (singleRectangle.c)\n");
     printf("  8) Parallel Rectangles (parallelRectangle.c)\n");
@@ -51,7 +51,7 @@ void mostrarMenu() {
     printf(" 11) Shared Increment Safe (shared_inc_safe.c)\n\n");
     
     printf("  0) Sortir\n\n");
-    printf("Introdueix la teva opció: ");
+    printf("Introdueix la teva opcio: ");
 }
 
 int main(int argc, char* argv[]) {
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     
-    printf("🎯 Benvingut al HOL - Hands On Lab!\n");
+    printf("Benvingut al HOL - Hands On Lab!\n");
     printf("Autors: Zakaria Hamdaoui, Joel Martinez Arjona, Sofia Giner Vargas\n");
     
     do {
@@ -72,7 +72,7 @@ int main(int argc, char* argv[]) {
         if (scanf("%d", &opcio) != 1) {
             // Neteja buffer si input invàlid
             while (getchar() != '\n');
-            printf("❌ Opció invàlida. Prova de nou.\n");
+            printf("Opcio invalida. Prova de nou.\n");
             continue;
         }
         
@@ -111,49 +111,49 @@ int main(int argc, char* argv[]) {
                 
             // PROCESS
             case 6:
-                printf("🔹 Executant Rectangle Single Thread...\n");
-                printf("ℹ️  Premeu ESC o tanqueu la finestra per sortir.\n");
+                printf("Executant Rectangle Single Thread...\n");
+                printf("Premeu ESC o tanqueu la finestra per sortir.\n");
                 rectangle(argc, argv);
                 break;
                 
             case 7:
-                printf("🔹 Executant Rectangle with Thread...\n");
-                printf("ℹ️  Premeu ESC o tanqueu la finestra per sortir.\n");
+                printf("Executant Rectangle with Thread...\n");
+                printf("Premeu ESC o tanqueu la finestra per sortir.\n");
                 singleRectangle(argc, argv);
                 break;
                 
             case 8:
-                printf("🔹 Executant Parallel Rectangles...\n");
-                printf("ℹ️  Premeu ESC o tanqueu la finestra per sortir.\n");
+                printf("Executant Parallel Rectangles...\n");
+                printf("Premeu ESC o tanqueu la finestra per sortir.\n");
                 parallelRectangle(argc, argv);
                 break;
                 
             case 9:
-                printf("🔹 Executant Shared Increment Simple...\n");
+                printf("Executant Shared Increment Simple...\n");
                 shared_inc(argc, argv);
                 break;
                 
             case 10:
-                printf("🔹 Executant Shared Increment Multi...\n");
+                printf("Executant Shared Increment Multi...\n");
                 shared_inc_multi(argc, argv);
                 break;
                 
             case 11:
-                printf("🔹 Executant Shared Increment Safe...\n");
+                printf("Executant Shared Increment Safe...\n");
                 shared_inc_safe(argc, argv);
                 break;
                 
             case 0:
-                printf("👋 Fins aviat!\n");
+                printf("Fins aviat!\n");
                 break;
                 
             default:
-                printf("❌ Opció invàlida. Prova amb un número del 0 al 11.\n");
+                printf("Opció invàlida. Prova amb un número del 0 al 11.\n");
                 break;
         }
         
         if (opcio != 0) {
-            printf("\n🎯 Programa finalitzat. Premeu ENTER per tornar al menú...");
+            printf("\nPrograma finalitzat. Premeu ENTER per tornar al menu...");
             getchar();
         }
         

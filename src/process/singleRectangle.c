@@ -19,11 +19,11 @@ static bool quit = false;
 static int frames = 0;
 
 bool initializeSDL();
-void updateRect(int start, int iters);
+static void updateRect(int start, int iters);
 void move(SDL_Rect *rect);
 
 // TODO: Thread function
-int updateRectThread(void* data) {
+static int updateRectThread(void* data) {
     while (!quit) {
         updateRect(0, MAXR);
     }
@@ -115,7 +115,7 @@ void move(SDL_Rect *rect) {
 }
 
 // Move rectangles 'start' to 'start+iters' in a random way
-void updateRect(int start, int iters) {
+static void updateRect(int start, int iters) {
     // Clear screen
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);

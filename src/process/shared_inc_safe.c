@@ -5,7 +5,7 @@
 #define N 1000000
 #define MAX_THREADS 16
 
-int globalVar = 0;
+static int globalVar = 0;
 SDL_Mutex* mutex = NULL;  // Mutex per protegir la variable global
 
 typedef struct {
@@ -13,7 +13,7 @@ typedef struct {
     int increments;
 } ThreadData;
 
-int TestThread(void *data) {
+static int TestThread(void *data) {
     ThreadData* threadData = (ThreadData*)data;
     printf("Thread %d started, will increment %d times\n", 
            threadData->thread_id, threadData->increments);

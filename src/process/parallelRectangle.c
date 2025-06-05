@@ -28,11 +28,11 @@ typedef struct
 } ThreadData;
 
 static bool initializeSDL();
-void updateRect(int start, int iters);
+static void updateRect(int start, int iters);
 static void move(SDL_Rect *rect);
 
 // Thread function - each thread processes a portion of rectangles
-int updateRectThread(void *data)
+static int updateRectThread(void *data)
 {
     ThreadData *threadData = (ThreadData *)data;
 
@@ -192,7 +192,7 @@ static void move(SDL_Rect *rect)
 }
 
 // Move rectangles 'start' to 'start+iters' in a random way
-void updateRect(int start, int iters)
+static void updateRect(int start, int iters)
 {
     // NOTE: En un cas real, hauríem de sincronitzar l'accés al renderer
     // però per simplicitat ho fem així

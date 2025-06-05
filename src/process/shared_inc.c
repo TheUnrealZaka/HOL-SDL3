@@ -2,9 +2,9 @@
 #include <SDL3/SDL.h>
 
 #define N 10000000
-int globalVar = 0;
+static int globalVar = 0;
 
-int TestThread(void *data) {
+static int TestThread(void *data) {
     printf("Thread started, will increment %d times\n", N);
     
     for (int i = 0; i < N; i++) {

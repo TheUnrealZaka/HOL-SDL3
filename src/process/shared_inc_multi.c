@@ -5,9 +5,9 @@
 #define N 1000000  // Reduït per fer més evident el problema
 #define MAX_THREADS 16
 
-int globalVar = 0;
+static int globalVar = 0;
 
-int TestThread(void *data) {
+static int TestThread(void *data) {
     int thread_id = *(int*)data;
     printf("Thread %d started, will increment %d times\n", thread_id, N);
     
