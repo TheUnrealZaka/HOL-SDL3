@@ -19,10 +19,10 @@ cd ..
 
 for %%f in (*.sln) do (
     echo Found solution file: %%f
-    echo Waiting 5 seconds before opening solution...
-    timeout /t 5 /nobreak >nul
+    echo Waiting 3 seconds before opening solution...
+    timeout /t 3 /nobreak >nul
     echo Opening solution file...
-    start "%%f"
+    start %%f
     goto :found
 )
 

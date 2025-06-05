@@ -98,63 +98,63 @@ int main(int argc, char* argv[]) {
         switch (opcio) {
             // FILES
             case 1:
-                printf("🔹 Executant Write String...\n");
+                printf("Executant Write String...\n");
                 write_string(argc, argv);
                 break;
                 
             case 2:
-                printf("🔹 Executant Write Integers...\n");
+                printf("Executant Write Integers...\n");
                 write_ints(argc, argv);
                 break;
                 
             case 3:
-                printf("🔹 Executant Read Integers...\n");
+                printf("Executant Read Integers...\n");
                 read_ints(argc, argv);
                 break;
                 
             case 4:
-                printf("🔹 Executant Hall of Fame...\n");
+                printf("Executant Hall of Fame...\n");
                 hall_of_fame(argc, argv);
                 break;
                 
             // MEMORY
             case 5:
-                printf("🔹 Executant Gerald's Bag...\n");
+                printf("Executant Gerald's Bag...\n");
                 geraldBag();
                 break;
                 
             case 6: // Agregar nuevo caso para matriu
-                printf("🔹 Executant Matrix Analysis...\n");
+                printf("Executant Matrix Analysis...\n");
                 matriu();
                 break;
                 
             case 7:
-                printf("🔹 Executant Matrix Multiply IJK...\n");
+                printf("Executant Matrix Multiply IJK...\n");
                 mm_ijk();
                 break;
                 
             case 8:
-                printf("🔹 Executant Matrix Multiply JKI...\n");
+                printf("Executant Matrix Multiply JKI...\n");
                 mm_jki();
                 break;
                 
             case 9:
-                printf("🔹 Executant Matrix Multiply KIJ...\n");
+                printf("Executant Matrix Multiply KIJ...\n");
                 mm_kij();
                 break;
                 
             case 10:
-                printf("🔹 Executant Matrix Multiply IJK2...\n");
+                printf("Executant Matrix Multiply IJK2...\n");
                 mm_ijk2();
                 break;
                 
             case 11:
-                printf("🔹 Executant Memory Test 1...\n");
+                printf("Executant Memory Test 1...\n");
                 mem();
                 break;
                 
             case 12:
-                printf("🔹 Executant Memory Test 2...\n");
+                printf("Executant Memory Test 2...\n");
                 mem2();
                 break;
                 
