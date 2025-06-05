@@ -27,6 +27,10 @@ typedef struct
     int thread_id; // Thread identifier
 } ThreadData;
 
+// Function declarations
+static bool initializeSDL();
+static void move(SDL_Rect *rect);  // Add this declaration
+
 static bool initializeSDL();
 // Move a rectangle in a random direction
 static void move(SDL_Rect *rect)
@@ -90,7 +94,8 @@ static void renderFrame()
     for (int i = 0; i < MAXR; i++)
     {
         SDL_SetRenderDrawColor(renderer, rand() % 255, rand() % 255, rand() % 255, 255);
-        SDL_FRect frect = {r[i].x, r[i].y, r[i].w, r[i].h};
+        // Fix: Cast to float to avoid warnings
+        SDL_FRect frect = {(float)r[i].x, (float)r[i].y, (float)r[i].w, (float)r[i].h};
         SDL_RenderFillRect(renderer, &frect);
     }
 
@@ -135,27 +140,26 @@ int parallelRectangle(int argc, char **argv)
     SDL_Thread *threads[MAX_THREADS];
     ThreadData threadData[MAX_THREADS];
 
-    // Calculate work distribution
+    // Calculate work distribution - FIXED VERSION
     int rectsPerThread = MAXR / numThreads;
     int remainingRects = MAXR % numThreads;
 
     for (int i = 0; i < numThreads; i++)
     {
         threadData[i].thread_id = i;
-        threadData[i].start = i * rectsPerThread;
         threadData[i].count = rectsPerThread;
 
-        // Fix the work distribution
+        // Give extra rectangles to first threads
         if (i < remainingRects)
         {
             threadData[i].count++;
-            // Fix: Adjust start position for remaining rectangles
-            threadData[i].start += i;
         }
-        else
+
+        // Calculate start position correctly
+        threadData[i].start = 0;
+        for (int j = 0; j < i; j++)
         {
-            // Fix: Adjust start position for threads without extra rectangles
-            threadData[i].start += remainingRects;
+            threadData[i].start += threadData[j].count;
         }
 
         printf("Creating thread %d: start=%d, count=%d\n",
