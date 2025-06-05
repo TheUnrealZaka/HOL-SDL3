@@ -20,6 +20,13 @@ extern int hall_of_fame(int argc, char* argv[]);
 
 // Memory
 extern int geraldBag();
+extern int matriu();
+extern int mm_ijk();
+extern int mm_jki();
+extern int mm_kij();
+extern int mm_ijk2();
+extern int mem();
+extern int mem2();
 
 // Process
 extern int rectangle(int argc, char** argv);
@@ -40,15 +47,22 @@ void mostrarMenu() {
     printf("  4) Hall of Fame (hall_of_fame.c)\n\n");
     
     printf("MEMORY:\n");
-    printf("  5) Gerald's Bag (geraldBag.c)\n\n");
+    printf("  5) Gerald's Bag (geraldBag.c)\n");
+    printf("  6) Matrix Analysis (matriu.c)\n");
+    printf("  7) Matrix Multiply IJK (mm-ijk.c)\n");
+    printf("  8) Matrix Multiply JKI (mm-jki.c)\n");
+    printf("  9) Matrix Multiply KIJ (mm-kij.c)\n");
+    printf(" 10) Matrix Multiply IJK2 (mm-ijk2.c)\n");
+    printf(" 11) Memory Test 1 (mem.c)\n");
+    printf(" 12) Memory Test 2 (mem2.c)\n\n");
     
     printf("PROCESS:\n");
-    printf("  6) Rectangle Single Thread (rectangle.c)\n");
-    printf("  7) Rectangle with Thread (singleRectangle.c)\n");
-    printf("  8) Parallel Rectangles (parallelRectangle.c)\n");
-    printf("  9) Shared Increment Simple (shared_inc.c)\n");
-    printf(" 10) Shared Increment Multi (shared_inc_multi.c)\n");
-    printf(" 11) Shared Increment Safe (shared_inc_safe.c)\n\n");
+    printf(" 13) Rectangle Single Thread (rectangle.c)\n");
+    printf(" 14) Rectangle with Thread (singleRectangle.c)\n");
+    printf(" 15) Parallel Rectangles (parallelRectangle.c)\n");
+    printf(" 16) Shared Increment Simple (shared_inc.c)\n");
+    printf(" 17) Shared Increment Multi (shared_inc_multi.c)\n");
+    printf(" 18) Shared Increment Safe (shared_inc_safe.c)\n\n");
     
     printf("  0) Sortir\n\n");
     printf("Introdueix la teva opcio: ");
@@ -109,36 +123,71 @@ int main(int argc, char* argv[]) {
                 geraldBag();
                 break;
                 
+            case 6: // Agregar nuevo caso para matriu
+                printf("🔹 Executant Matrix Analysis...\n");
+                matriu();
+                break;
+                
+            case 7:
+                printf("🔹 Executant Matrix Multiply IJK...\n");
+                mm_ijk();
+                break;
+                
+            case 8:
+                printf("🔹 Executant Matrix Multiply JKI...\n");
+                mm_jki();
+                break;
+                
+            case 9:
+                printf("🔹 Executant Matrix Multiply KIJ...\n");
+                mm_kij();
+                break;
+                
+            case 10:
+                printf("🔹 Executant Matrix Multiply IJK2...\n");
+                mm_ijk2();
+                break;
+                
+            case 11:
+                printf("🔹 Executant Memory Test 1...\n");
+                mem();
+                break;
+                
+            case 12:
+                printf("🔹 Executant Memory Test 2...\n");
+                mem2();
+                break;
+                
             // PROCESS
-            case 6:
+            case 13: // Cambiar números de casos
                 printf("Executant Rectangle Single Thread...\n");
                 printf("Premeu ESC o tanqueu la finestra per sortir.\n");
                 rectangle(argc, argv);
                 break;
                 
-            case 7:
+            case 14:
                 printf("Executant Rectangle with Thread...\n");
                 printf("Premeu ESC o tanqueu la finestra per sortir.\n");
                 singleRectangle(argc, argv);
                 break;
                 
-            case 8:
+            case 15:
                 printf("Executant Parallel Rectangles...\n");
                 printf("Premeu ESC o tanqueu la finestra per sortir.\n");
                 parallelRectangle(argc, argv);
                 break;
                 
-            case 9:
+            case 16:
                 printf("Executant Shared Increment Simple...\n");
                 shared_inc(argc, argv);
                 break;
                 
-            case 10:
+            case 17:
                 printf("Executant Shared Increment Multi...\n");
                 shared_inc_multi(argc, argv);
                 break;
                 
-            case 11:
+            case 18:
                 printf("Executant Shared Increment Safe...\n");
                 shared_inc_safe(argc, argv);
                 break;
@@ -148,7 +197,7 @@ int main(int argc, char* argv[]) {
                 break;
                 
             default:
-                printf("Opció invàlida. Prova amb un número del 0 al 11.\n");
+                printf("Opcio invalida. Prova amb un número del 0 al 18.\n");
                 break;
         }
         

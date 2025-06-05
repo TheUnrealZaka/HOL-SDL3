@@ -4,7 +4,7 @@
 
 
 #include "sampler.h"
-#include "measure.h"
+#include "memory/measure.h"
 
 #ifdef _WIN32
 #include<windows.h>

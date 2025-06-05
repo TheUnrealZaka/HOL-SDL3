@@ -1,21 +1,21 @@
 #include <stdio.h>
-#include "measure.h"
+#include "memory/measure.h"
 #ifndef N
-#define N 256  /* Dimensión por defecto */
+#define N 256  /* Dimensiï¿½n por defecto */
 #endif
 
-float A[N][N], B[N][N], C[N][N];
+static float A[N][N], B[N][N], C[N][N];
 
 /* Execute the call f() and measure its execution time in useconds */
-double measure( void (*f)(void) )
+static double measure( void (*f)(void) )
 {
 	return measure_full((int(*)(int,int))f, 0xDEAD, 0xDEAD, 1, 0.01, 1); // Single execution
 }
 
 
-void init_data();
-void code();
-int main() {
+static void init_data();
+static void code();
+int mm_jki() {
   double t;
   int i, j;
 
@@ -23,7 +23,7 @@ int main() {
   // Inicializacion de las matrices A, B y C
   init_data();
 
-  // CODIGO A EVALUAR: forma jki del producto de dos matrices de tamaño NxN
+  // CODIGO A EVALUAR: forma jki del producto de dos matrices de tamaï¿½o NxN
   t = measure(code);
 
 
@@ -32,7 +32,7 @@ int main() {
   }
   if (N <= 6) {
     /* 
-     * Para Ns peque¤as se saca el resultado para comprobar que las tres
+     * Para Ns pequeï¿½as se saca el resultado para comprobar que las tres
      * formas dan el mismo resultado
      */
     printf("\nFORMA jki \n\n");
@@ -51,7 +51,7 @@ int main() {
   return 0;
 }
 
-void init_data()
+static void init_data()
 {
   float x;
   int i, j;
@@ -65,7 +65,7 @@ void init_data()
     }
 }
 
-void code()
+static void code()
 {
   int i, j, k;
   for (j=0; j<N; j++)

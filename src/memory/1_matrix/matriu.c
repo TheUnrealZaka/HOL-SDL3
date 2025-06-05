@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "measure.h"
+#include "memory/measure.h"
 #include <stdlib.h>
 
 
@@ -8,16 +8,16 @@
 #define COLS N
 
 /* Data matrix */
-char M[ROWS][COLS];
+static char M[ROWS][COLS];
 
 /* Execute the call f() and measure its execution time in useconds */
-double measure( void (*f)(void) )
+static double measure( void (*f)(void) )
 {
 	return measure_full((int(*)(int,int))f, 0xDEAD, 0xDEAD, 3, 0.01, 10); // 1% error
 }
 
 /* init_data - initializes the array */
-void init_data()
+static void init_data()
 {
 	int i, j;
 	for(i=0; i<ROWS; i++) {
@@ -28,7 +28,7 @@ void init_data()
 }
 
 /* Traverse matrix 'M' by rows */
-void matrix_rows()
+static void matrix_rows()
 {
 	int i, j;
 	for(i=0; i<ROWS; i++) {
@@ -39,7 +39,7 @@ void matrix_rows()
 }
 
 /* Traverse matrix 'M' by columns */
-void matrix_cols()
+static void matrix_cols()
 {
 	int i, j;
 	for(j=0; j<COLS; j++) {
@@ -49,29 +49,30 @@ void matrix_cols()
 	}
 }
 
-int main()
+int matriu() // Aquesta funció NO és static perquè és cridada des de main
 {
-	printf(" Matrix of %d x %d elements \n", ROWS, COLS);
-	printf("    Size = %8ld bytes / %8ldKiBs / %8ldMiBs\n", sizeof(M), sizeof(M)/1024, sizeof(M)/(1024*1024));
-	printf(" rowsize = %8ld bytes / %8ldKiBs / %8ldMiBs\n", COLS*sizeof(M[0][0]), COLS*sizeof(M[0][0])/1024, COLS*sizeof(M[0][0])/(1024*1024));
+    printf(" Matrix of %d x %d elements \n", ROWS, COLS);
+    printf("    Size = %8ld bytes / %8ldKiBs / %8ldMiBs\n", sizeof(M), sizeof(M)/1024, sizeof(M)/(1024*1024));
+    printf(" rowsize = %8ld bytes / %8ldKiBs / %8ldMiBs\n", COLS*sizeof(M[0][0]), COLS*sizeof(M[0][0])/1024, COLS*sizeof(M[0][0])/(1024*1024));
 
-	init_data();
+    init_data();
 
-	//Initial traversal to warmup the memory...
-	printf(" * Time to initialize : %f useconds\n", measure(matrix_rows));
+    //Initial traversal to warmup the memory...
+    printf(" * Time to initialize : %f useconds\n", measure(matrix_rows));
 
-	printf(" Traverse using ROWS...\n");
-	printf(" * Time (1)           : %f useconds\n", measure(matrix_rows));
-	printf(" * Time (2)           : %f useconds\n", measure(matrix_rows));
-	printf(" * Time (3)           : %f useconds\n", measure(matrix_rows));
-	printf(" Traverse using COLUMNS...\n");
-	printf(" * Time (1)           : %f useconds\n", measure(matrix_cols));
-	printf(" * Time (2)           : %f useconds\n", measure(matrix_cols));
-	printf(" * Time (3)           : %f useconds\n", measure(matrix_cols));
+    printf(" Traverse using ROWS...\n");
+    printf(" * Time (1)           : %f useconds\n", measure(matrix_rows));
+    printf(" * Time (2)           : %f useconds\n", measure(matrix_rows));
+    printf(" * Time (3)           : %f useconds\n", measure(matrix_rows));
+    printf(" Traverse using COLUMNS...\n");
+    printf(" * Time (1)           : %f useconds\n", measure(matrix_cols));
+    printf(" * Time (2)           : %f useconds\n", measure(matrix_cols));
+    printf(" * Time (3)           : %f useconds\n", measure(matrix_cols));
 
 #ifdef _WIN32
-	printf("Press return to continue\n");
-	char c;
-	read(0, &c, 1);
+    printf("Press return to continue\n");
+    char c;
+    read(0, &c, 1);
 #endif
+    return 0;
 }
